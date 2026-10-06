@@ -9,13 +9,18 @@
   
   html {
     color-scheme: dark;
-    scroll-behavior: smooth;
   }
   
   body {
     background-color: #10131A;
     color: #F5F5F5;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: clip;
+  }
+
+  /* Ensure intentional anchor navigation lands comfortably below fixed header */
+  section[id] {
+    scroll-margin-top: 5rem;
   }
 
   ::selection {
