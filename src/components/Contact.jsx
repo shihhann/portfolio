@@ -167,18 +167,18 @@ I'm contacting you through your portfolio.`;
           <div className="lg:col-span-5 space-y-4">
             
             {/* Email Card with Mailto & Copy */}
-            <div className="contact-channel-card bg-night-surface border border-night-border rounded-xl p-5 hover:border-lemon/40 transition-colors group">
+            <div className="contact-channel-card bg-night-surface border border-night-border rounded-xl p-5 hover:border-lemon/50 hover:bg-night-elevated hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 group">
               <div className="flex items-start justify-between">
                 <a
                   href={`mailto:${contactInfo.email}`}
                   className="flex items-center gap-3 flex-1 focus:outline-none"
                 >
-                  <div className="p-2.5 rounded-lg bg-night border border-night-border text-lemon group-hover:border-lemon/40 transition-colors">
+                  <div className="p-2.5 rounded-lg bg-night border border-night-border text-lemon group-hover:border-lemon/50 group-hover:scale-105 group-hover:shadow-[0_0_12px_rgba(239,255,79,0.2)] transition-all duration-200">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-xs font-mono text-content-muted uppercase">Email</span>
-                    <p className="text-sm font-medium text-white group-hover:text-lemon transition-colors break-all">
+                    <p className="text-sm font-medium text-white group-hover:text-lemon transition-colors duration-200 break-all">
                       {contactInfo.email}
                     </p>
                   </div>
@@ -186,15 +186,15 @@ I'm contacting you through your portfolio.`;
                 <div className="flex items-center gap-1.5 ml-2">
                   <a
                     href={`mailto:${contactInfo.email}`}
-                    className="p-2 rounded-lg bg-night border border-night-border hover:border-lemon/50 text-content-secondary hover:text-lemon transition-colors"
+                    className="p-2 rounded-lg bg-night border border-night-border hover:border-lemon/60 text-content-secondary hover:text-lemon hover:bg-night-surface transition-all duration-200"
                     title="Send Email"
                   >
-                    <ArrowUpRight className="w-4 h-4" />
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                   <button
                     type="button"
                     onClick={copyEmail}
-                    className="p-2 rounded-lg bg-night border border-night-border hover:border-lemon/50 text-content-secondary hover:text-white transition-colors"
+                    className="p-2 rounded-lg bg-night border border-night-border hover:border-lemon/60 text-content-secondary hover:text-white hover:bg-night-surface transition-all duration-200 cursor-pointer"
                     title="Copy email to clipboard"
                   >
                     {copied ? <Check className="w-4 h-4 text-lemon" /> : <Copy className="w-4 h-4" />}
@@ -208,21 +208,21 @@ I'm contacting you through your portfolio.`;
               href={contactInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="contact-channel-card block bg-night-surface border border-night-border rounded-xl p-5 hover:border-lemon/40 transition-colors group"
+              className="contact-channel-card block bg-night-surface border border-night-border rounded-xl p-5 hover:border-lemon/50 hover:bg-night-elevated hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 group"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-lg bg-night border border-night-border text-lemon group-hover:border-lemon/40 transition-colors">
+                  <div className="p-2.5 rounded-lg bg-night border border-night-border text-lemon group-hover:border-lemon/50 group-hover:scale-105 group-hover:shadow-[0_0_12px_rgba(239,255,79,0.2)] transition-all duration-200">
                     <GithubIcon className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-xs font-mono text-content-muted uppercase">GitHub Profile</span>
-                    <p className="text-sm font-medium text-white group-hover:text-lemon transition-colors">
+                    <p className="text-sm font-medium text-white group-hover:text-lemon transition-colors duration-200">
                       github.com/shihhann
                     </p>
                   </div>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-content-secondary group-hover:text-lemon group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                <ArrowUpRight className="w-4 h-4 text-content-secondary group-hover:text-lemon group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-200" />
               </div>
             </a>
 
@@ -231,27 +231,30 @@ I'm contacting you through your portfolio.`;
               href={contactInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="contact-channel-card block bg-night-surface border border-night-border rounded-xl p-5 hover:border-lemon/40 transition-colors group"
+              className="contact-channel-card block bg-night-surface border border-night-border rounded-xl p-5 hover:border-lemon/50 hover:bg-night-elevated hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 group"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-lg bg-night border border-night-border text-lemon group-hover:border-lemon/40 transition-colors">
+                  <div className="p-2.5 rounded-lg bg-night border border-night-border text-lemon group-hover:border-lemon/50 group-hover:scale-105 group-hover:shadow-[0_0_12px_rgba(239,255,79,0.2)] transition-all duration-200">
                     <LinkedinIcon className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-xs font-mono text-content-muted uppercase">LinkedIn</span>
-                    <p className="text-sm font-medium text-white group-hover:text-lemon transition-colors">
+                    <p className="text-sm font-medium text-white group-hover:text-lemon transition-colors duration-200">
                       linkedin.com/in/muhdshihan
                     </p>
                   </div>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-content-secondary group-hover:text-lemon group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                <ArrowUpRight className="w-4 h-4 text-content-secondary group-hover:text-lemon group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-200" />
               </div>
             </a>
 
             {/* Availability note */}
-            <div className="contact-channel-card p-4 rounded-xl bg-night-surface/40 border border-night-border text-xs font-mono text-content-muted flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-lemon animate-pulse shrink-0" />
+            <div className="contact-channel-card p-4 rounded-xl bg-night-surface/40 border border-night-border hover:border-night-border-light text-xs font-mono text-content-muted flex items-center gap-2.5 transition-colors duration-200">
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lemon opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-lemon"></span>
+              </span>
               <span>Available for Python, Django, and React full-stack collaborations.</span>
             </div>
 
@@ -259,7 +262,7 @@ I'm contacting you through your portfolio.`;
 
           {/* Interactive Message Form */}
           <div className="lg:col-span-7">
-            <div className="contact-form-box bg-night-surface border border-night-border rounded-2xl p-6 sm:p-8">
+            <div className="contact-form-box bg-night-surface border border-night-border hover:border-night-border-light rounded-2xl p-6 sm:p-8 transition-colors duration-200">
               <h3 className="font-heading font-semibold text-lg text-white mb-2">
                 Send a Direct Message
               </h3>
@@ -282,7 +285,7 @@ I'm contacting you through your portfolio.`;
                         if (errorMessage) setErrorMessage(null);
                       }}
                       placeholder="Your name"
-                      className="w-full px-4 py-2.5 rounded-lg bg-night border border-night-border text-white text-sm focus:outline-none focus:border-lemon transition-colors disabled:opacity-60"
+                      className="w-full px-4 py-2.5 rounded-lg bg-night border border-night-border text-white text-sm focus:outline-none focus:border-lemon focus:ring-1 focus:ring-lemon/30 transition-all duration-200 disabled:opacity-60"
                     />
                   </div>
                   <div>
@@ -298,7 +301,7 @@ I'm contacting you through your portfolio.`;
                         if (errorMessage) setErrorMessage(null);
                       }}
                       placeholder="name@domain.com"
-                      className="w-full px-4 py-2.5 rounded-lg bg-night border border-night-border text-white text-sm focus:outline-none focus:border-lemon transition-colors disabled:opacity-60"
+                      className="w-full px-4 py-2.5 rounded-lg bg-night border border-night-border text-white text-sm focus:outline-none focus:border-lemon focus:ring-1 focus:ring-lemon/30 transition-all duration-200 disabled:opacity-60"
                     />
                   </div>
                 </div>
@@ -316,7 +319,7 @@ I'm contacting you through your portfolio.`;
                       if (errorMessage) setErrorMessage(null);
                     }}
                     placeholder="Hi Shihan, I'd like to talk about..."
-                    className="w-full px-4 py-2.5 rounded-lg bg-night border border-night-border text-white text-sm focus:outline-none focus:border-lemon transition-colors resize-none disabled:opacity-60"
+                    className="w-full px-4 py-2.5 rounded-lg bg-night border border-night-border text-white text-sm focus:outline-none focus:border-lemon focus:ring-1 focus:ring-lemon/30 transition-all duration-200 resize-none disabled:opacity-60"
                   />
                 </div>
 
@@ -339,7 +342,7 @@ I'm contacting you through your portfolio.`;
                 <button
                   type="submit"
                   disabled={isOpening}
-                  className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-lemon text-night font-heading font-bold text-sm hover:bg-lemon-muted transition-colors shadow-lemon-sm disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                  className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-lemon text-night font-heading font-bold text-sm hover:bg-lemon-muted hover:shadow-lemon-glow hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 shadow-lemon-sm disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {isOpening ? (
                     <>
@@ -349,7 +352,7 @@ I'm contacting you through your portfolio.`;
                   ) : (
                     <>
                       <span>Send on WhatsApp</span>
-                      <WhatsAppIcon className="w-4 h-4 transition-transform group-hover:scale-110" />
+                      <WhatsAppIcon className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" />
                     </>
                   )}
                 </button>

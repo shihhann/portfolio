@@ -88,10 +88,17 @@ export const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Main Narrative Card */}
-          <div className="about-narrative lg:col-span-7 bg-night-surface border border-night-border rounded-2xl p-6 sm:p-8 relative overflow-hidden group hover:border-night-border-light transition-colors">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-lemon/[0.03] rounded-bl-full pointer-events-none" />
+          <div
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+              e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+            }}
+            className="about-narrative spotlight-card lg:col-span-7 bg-night-surface border border-night-border rounded-2xl p-6 sm:p-8 relative overflow-hidden group hover:border-night-border-light hover:shadow-card-hover transition-all duration-300"
+          >
+            <div className="absolute top-0 right-0 w-48 h-48 bg-lemon/[0.03] rounded-bl-full pointer-events-none group-hover:bg-lemon/[0.06] transition-colors duration-300" />
 
-            <div className="space-y-5 text-content-secondary leading-relaxed text-sm sm:text-base">
+            <div className="space-y-5 text-content-secondary leading-relaxed text-sm sm:text-base relative z-10">
               <p>
                 I am <span className="text-white font-medium">Shihan</span>, a passionate student developer currently mastering full-stack software development through the <strong className="text-white font-medium">Brototype Python Django React program</strong>.
               </p>
@@ -106,19 +113,22 @@ export const About = () => {
             </div>
 
             {/* Quote / Focus Box */}
-            <div className="mt-8 pt-6 border-t border-night-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="mt-8 pt-6 border-t border-night-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
               <div className="flex items-center gap-3">
-                <div className="w-2.5 h-2.5 rounded-full bg-lemon" />
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lemon opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-lemon"></span>
+                </span>
                 <span className="font-mono text-xs text-content-primary">
                   Goal: Professional Python Backend / Full-Stack Engineer
                 </span>
               </div>
               <a
                 href="#journey"
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-lemon hover:underline"
+                className="group/link inline-flex items-center gap-1.5 text-xs font-mono font-medium text-lemon hover:underline"
               >
                 <span>View Full Curriculum</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1" />
               </a>
             </div>
           </div>
@@ -128,14 +138,14 @@ export const About = () => {
             {pillars.map((item, index) => (
               <div
                 key={index}
-                className="about-pillar bg-night-surface/70 border border-night-border rounded-xl p-5 hover:border-lemon/40 transition-all duration-200 group"
+                className="about-pillar bg-night-surface/70 border border-night-border rounded-xl p-5 hover:border-lemon/50 hover:bg-night-elevated hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 group cursor-default"
               >
                 <div className="flex items-start gap-3.5">
-                  <div className="p-2 rounded-lg bg-night border border-night-border group-hover:border-lemon/40 transition-colors">
+                  <div className="p-2 rounded-lg bg-night border border-night-border group-hover:border-lemon/50 group-hover:scale-105 group-hover:shadow-[0_0_12px_rgba(239,255,79,0.15)] transition-all duration-200">
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="font-heading font-semibold text-white text-sm mb-1 group-hover:text-lemon transition-colors">
+                    <h3 className="font-heading font-semibold text-white text-sm mb-1 group-hover:text-lemon transition-colors duration-200">
                       {item.title}
                     </h3>
                     <p className="text-xs text-content-secondary leading-relaxed">

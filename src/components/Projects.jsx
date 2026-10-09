@@ -71,19 +71,24 @@ export const Projects = () => {
           {projectsData.map((project) => (
             <div
               key={project.id}
-              className="project-card bg-night-surface border border-night-border rounded-2xl p-6 sm:p-7 flex flex-col justify-between group hover:border-night-border-light hover:scale-[1.01] hover:shadow-card-hover transition-all duration-300 relative overflow-hidden"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+              }}
+              className="project-card spotlight-card bg-night-surface border border-night-border rounded-2xl p-6 sm:p-7 flex flex-col justify-between group hover:border-lemon/45 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-6px_rgba(0,0,0,0.5),0_0_25px_-5px_rgba(239,255,79,0.06)] transition-all duration-300 relative overflow-hidden"
             >
               {/* Subtle top corner accent */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-lemon/[0.02] rounded-bl-full pointer-events-none group-hover:bg-lemon/[0.05] transition-colors" />
+              <div className="absolute top-0 right-0 w-36 h-36 bg-lemon/[0.02] rounded-bl-full pointer-events-none group-hover:bg-lemon/[0.06] transition-colors duration-300" />
 
-              <div>
+              <div className="relative z-10">
                 {/* Header row */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-2.5 rounded-xl bg-night border border-night-border group-hover:border-lemon/40 transition-colors">
+                  <div className="p-2.5 rounded-xl bg-night border border-night-border group-hover:border-lemon/50 group-hover:scale-105 group-hover:shadow-[0_0_15px_rgba(239,255,79,0.2)] transition-all duration-200">
                     <FolderGit2 className="w-5 h-5 text-lemon" />
                   </div>
                   {project.status && (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-night border border-night-border text-content-secondary group-hover:border-lemon/30 group-hover:text-lemon transition-colors">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-night border border-night-border text-content-secondary group-hover:border-lemon/40 group-hover:text-lemon transition-colors duration-200">
                       <Clock className="w-3 h-3 text-lemon" />
                       {project.status}
                     </span>
@@ -91,7 +96,7 @@ export const Projects = () => {
                 </div>
 
                 {/* Project Title */}
-                <h3 className="font-heading font-bold text-xl text-white group-hover:text-lemon transition-colors mb-3">
+                <h3 className="font-heading font-bold text-xl text-white group-hover:text-lemon transition-colors duration-200 mb-3">
                   {project.title}
                 </h3>
 
@@ -105,7 +110,7 @@ export const Projects = () => {
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 rounded-md bg-night text-xs font-mono text-content-primary border border-night-border/80"
+                      className="px-2.5 py-1 rounded-md bg-night text-xs font-mono text-content-primary border border-night-border/80 hover:border-lemon/40 hover:text-lemon hover:bg-lemon/5 transition-all duration-150 cursor-default"
                     >
                       {tech}
                     </span>
@@ -114,17 +119,17 @@ export const Projects = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-5 border-t border-night-border/70 flex items-center gap-3">
+              <div className="pt-5 border-t border-night-border/70 flex items-center gap-3 relative z-10">
                 {project.githubUrl ? (
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-night border border-night-border hover:border-lemon/60 text-xs font-mono text-content-primary hover:text-lemon transition-colors group/btn"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-night border border-night-border hover:border-lemon/60 text-xs font-mono text-content-primary hover:text-lemon hover:bg-night-elevated hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 group/btn"
                   >
                     <GithubIcon className="w-4 h-4" />
                     <span>Source Code</span>
-                    <ExternalLink className="w-3 h-3 opacity-60 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                    <ExternalLink className="w-3 h-3 opacity-60 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 group-hover/btn:opacity-100 transition-all duration-200" />
                   </a>
                 ) : (
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-night/50 border border-night-border/60 text-xs font-mono text-content-muted">
@@ -138,9 +143,9 @@ export const Projects = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-lemon text-night font-mono font-medium text-xs hover:bg-lemon-muted transition-colors group/btn"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-lemon text-night font-mono font-medium text-xs hover:bg-lemon-muted hover:shadow-lemon-sm hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 group/btn"
                   >
-                    <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                    <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-200" />
                     <span>Live Demo</span>
                   </a>
                 ) : (
@@ -154,7 +159,7 @@ export const Projects = () => {
         </div>
 
         {/* Development Note */}
-        <div className="projects-footer rounded-xl bg-night-surface/60 border border-night-border p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="projects-footer rounded-xl bg-night-surface/60 border border-night-border hover:border-night-border-light p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-colors duration-200">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-lemon animate-ping" />
             <span className="text-xs font-mono text-content-secondary">
@@ -165,10 +170,10 @@ export const Projects = () => {
             href="https://github.com/shihhann/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-mono text-lemon hover:underline inline-flex items-center gap-1 group/gh"
+            className="text-xs font-mono text-lemon hover:underline inline-flex items-center gap-1 group/gh font-medium"
           >
             <span>GitHub Profile</span>
-            <ExternalLink className="w-3 h-3 group-hover/gh:translate-x-0.5 group-hover/gh:-translate-y-0.5 transition-transform" />
+            <ExternalLink className="w-3 h-3 group-hover/gh:translate-x-0.5 group-hover/gh:-translate-y-0.5 transition-transform duration-200" />
           </a>
         </div>
 

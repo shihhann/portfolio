@@ -78,17 +78,22 @@ export const Skills = () => {
           {skillsData.map((category) => (
             <div
               key={category.category}
-              className="skill-category-card bg-night-surface border border-night-border rounded-2xl p-6 hover:border-night-border-light hover:shadow-card-hover transition-all duration-200 flex flex-col justify-between group"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+              }}
+              className="skill-category-card spotlight-card bg-night-surface border border-night-border rounded-2xl p-6 hover:border-lemon/40 hover:-translate-y-1.5 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between group"
             >
-              <div>
+              <div className="relative z-10">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-night border border-night-border group-hover:border-lemon/40 transition-colors">
+                    <div className="p-2.5 rounded-lg bg-night border border-night-border group-hover:border-lemon/50 group-hover:scale-105 group-hover:shadow-[0_0_14px_rgba(239,255,79,0.2)] transition-all duration-200">
                       {categoryIcons[category.category] || <Terminal className="w-5 h-5 text-lemon" />}
                     </div>
                     <div>
-                      <h3 className="font-heading font-bold text-white text-base">
+                      <h3 className="font-heading font-bold text-white text-base group-hover:text-lemon transition-colors duration-200">
                         {category.category}
                       </h3>
                       <span className="text-[11px] font-mono text-content-muted">
@@ -108,9 +113,9 @@ export const Skills = () => {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-night border border-night-border/90 text-xs font-mono text-content-primary hover:border-lemon/50 hover:text-lemon transition-all duration-150 cursor-default"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-night border border-night-border/90 text-xs font-mono text-content-primary hover:border-lemon/50 hover:text-lemon hover:bg-lemon/5 hover:-translate-y-0.5 transition-all duration-150 cursor-default"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-lemon/70" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-lemon/70 group-hover:bg-lemon" />
                       {skill}
                     </span>
                   ))}
@@ -118,9 +123,9 @@ export const Skills = () => {
               </div>
 
               {/* Bottom Subtle Status */}
-              <div className="mt-6 pt-4 border-t border-night-border/50 flex items-center justify-between text-[11px] font-mono text-content-muted">
+              <div className="mt-6 pt-4 border-t border-night-border/50 flex items-center justify-between text-[11px] font-mono text-content-muted relative z-10">
                 <span>Active Stack</span>
-                <span className="text-lemon/80">Verified</span>
+                <span className="text-lemon/80 font-medium">Verified</span>
               </div>
             </div>
           ))}

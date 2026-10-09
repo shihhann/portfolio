@@ -70,34 +70,39 @@ export const Journey = () => {
         key={node.step}
         onMouseEnter={() => setHoveredIndex(index)}
         onMouseLeave={() => setHoveredIndex(null)}
-        className={`journey-node relative flex-1 rounded-xl p-5 transition-all duration-300 transform ${
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        }}
+        className={`journey-node spotlight-card relative flex-1 rounded-xl p-5 transition-all duration-300 transform ${
           isCurrent
-            ? 'bg-night-surface border-2 border-lemon shadow-lemon-glow relative z-20'
+            ? 'bg-night-surface border-2 border-lemon shadow-lemon-glow relative z-20 hover:-translate-y-1'
             : isHovered
-            ? 'bg-night-elevated border-lemon/60 shadow-card-hover -translate-y-1 z-10'
+            ? 'bg-night-elevated border-lemon/60 shadow-card-hover -translate-y-1.5 z-10'
             : 'bg-night-surface border border-night-border hover:border-night-border-light'
         }`}
       >
         {/* Subtle inner corner accent */}
         <div
-          className={`absolute top-0 right-0 w-20 h-20 rounded-bl-full pointer-events-none transition-opacity ${
+          className={`absolute top-0 right-0 w-24 h-24 rounded-bl-full pointer-events-none transition-opacity duration-300 ${
             isCurrent
               ? 'bg-lemon/10 opacity-100'
               : isHovered
-              ? 'bg-lemon/5 opacity-100'
+              ? 'bg-lemon/8 opacity-100'
               : 'opacity-0'
           }`}
         />
 
         {/* Top bar: Step number & Status */}
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-3 relative z-10">
           <div className="flex items-center gap-2">
             <span
-              className={`font-mono text-xs font-bold px-2 py-0.5 rounded transition-colors ${
+              className={`font-mono text-xs font-bold px-2 py-0.5 rounded transition-all duration-200 ${
                 isCurrent
                   ? 'bg-lemon text-night shadow-lemon-sm'
                   : isHovered
-                  ? 'bg-lemon/15 text-lemon border border-lemon/30'
+                  ? 'bg-lemon/20 text-lemon border border-lemon/40 shadow-sm'
                   : 'bg-night text-content-muted border border-night-border'
               }`}
             >
@@ -122,7 +127,7 @@ export const Journey = () => {
 
         {/* Technology Title */}
         <h3
-          className={`font-heading font-bold text-lg leading-tight transition-colors mb-1.5 ${
+          className={`font-heading font-bold text-lg leading-tight transition-colors duration-200 mb-1.5 relative z-10 ${
             isCurrent
               ? 'text-white'
               : isHovered
@@ -134,13 +139,13 @@ export const Journey = () => {
         </h3>
 
         {/* Compact supporting label */}
-        <p className="text-xs font-mono text-content-secondary">
+        <p className="text-xs font-mono text-content-secondary relative z-10">
           {node.label}
         </p>
 
         {/* Pulsing indicator for active stage */}
         {isCurrent && (
-          <div className="mt-4 pt-3 border-t border-lemon/20 flex items-center justify-between text-[11px] font-mono text-lemon">
+          <div className="mt-4 pt-3 border-t border-lemon/20 flex items-center justify-between text-[11px] font-mono text-lemon relative z-10">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-lemon animate-pulse" />
               Active Learning Stage
@@ -370,7 +375,7 @@ export const Journey = () => {
         </div>
 
         {/* Footer info badge */}
-        <div className="journey-footer mt-12 p-4 rounded-xl bg-night-surface/60 border border-night-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-content-secondary">
+        <div className="journey-footer mt-12 p-4 rounded-xl bg-night-surface/60 border border-night-border hover:border-night-border-light flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-content-secondary transition-colors duration-200">
           <div className="flex items-center gap-2">
             <Compass className="w-4 h-4 text-lemon shrink-0" />
             <span>
@@ -379,10 +384,10 @@ export const Journey = () => {
           </div>
           <a
             href="#projects"
-            className="text-lemon hover:underline shrink-0 flex items-center gap-1"
+            className="group/link text-lemon hover:underline shrink-0 flex items-center gap-1.5 font-medium"
           >
             <span>View Practical Work</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1" />
           </a>
         </div>
 

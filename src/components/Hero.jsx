@@ -164,22 +164,22 @@ export const Hero = () => {
           '-=0.35'
         )
         .fromTo(
-          '.hero-ctas',
+          '.hero-ctas .hero-btn',
           { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.5 },
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
           '-=0.35'
+        )
+        .fromTo(
+          '.hero-window',
+          { opacity: 0, x: 26 },
+          { opacity: 1, x: 0, duration: 0.75, ease: 'power2.out' },
+          '-=0.55'
         )
         .fromTo(
           '.hero-philosophy',
           { opacity: 0, y: 10 },
           { opacity: 1, y: 0, duration: 0.45 },
           '-=0.3'
-        )
-        .fromTo(
-          '.hero-window',
-          { opacity: 0, x: 26 },
-          { opacity: 1, x: 0, duration: 0.75, ease: 'power2.out' },
-          '-=0.6'
         );
     },
     { scope: heroRef }
@@ -305,7 +305,7 @@ export const Hero = () => {
       }
 
       return (
-        <div key={lineIdx} className="leading-relaxed whitespace-pre">
+        <div key={lineIdx} className="leading-relaxed whitespace-pre hover:bg-white/[0.03] rounded px-1.5 -mx-1.5 transition-colors duration-150">
           {renderedTokens}
           {isComplete && lineIdx === lines.length - 1 && (
             <span
@@ -334,15 +334,14 @@ export const Hero = () => {
           {/* Left Hero Content */}
           <div className="lg:col-span-7 flex flex-col items-start">
             
-            {/* Student Developer Pill Badge */}
-            <div className="hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-night-surface border border-night-border mb-6">
-              <span className="w-2 h-2 rounded-full bg-lemon animate-pulse" />
-              <span className="font-mono text-[11px] font-semibold tracking-wider text-lemon uppercase">
-                STUDENT DEVELOPER
+            {/* Software Developer Pill Badge */}
+            <div className="hero-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-night-surface border border-night-border hover:border-night-border-light mb-6 shadow-sm transition-colors duration-200">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lemon opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-lemon"></span>
               </span>
-              <span className="text-night-border">|</span>
-              <span className="font-mono text-[11px] text-content-secondary">
-                Brototype Cohort
+              <span className="font-mono text-[11px] font-semibold tracking-wider text-lemon uppercase">
+                SOFTWARE DEVELOPER
               </span>
             </div>
 
@@ -367,35 +366,35 @@ export const Hero = () => {
             <div className="hero-ctas flex flex-wrap items-center gap-4 w-full sm:w-auto mb-10">
               <a
                 href="#projects"
-                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-lemon text-night font-heading font-bold text-sm tracking-wide shadow-lemon-sm hover:shadow-lemon-glow hover:bg-lemon-muted transition-all duration-200 active:scale-[0.98]"
+                className="hero-btn group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-lemon text-night font-heading font-bold text-sm tracking-wide shadow-lemon-sm hover:shadow-lemon-glow hover:bg-lemon-muted hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200"
               >
                 <span>View Projects</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1.5" />
               </a>
 
               <a
                 href="#journey"
-                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-night-surface border border-night-border hover:border-night-border-light text-content-primary hover:text-white font-heading font-semibold text-sm transition-all duration-200 hover:bg-night-elevated"
+                className="hero-btn group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-night-surface border border-night-border hover:border-lemon/40 hover:bg-night-elevated text-content-primary hover:text-white font-heading font-semibold text-sm hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.5)] active:scale-[0.98] transition-all duration-200"
               >
                 <span>Explore My Journey</span>
-                <ChevronRight className="w-4 h-4 text-content-secondary group-hover:translate-x-0.5 group-hover:text-lemon transition-all" />
+                <ChevronRight className="w-4 h-4 text-content-secondary group-hover:translate-x-1 group-hover:text-lemon transition-all duration-200" />
               </a>
             </div>
 
             {/* Philosophy Bar */}
             <div className="hero-philosophy w-full pt-6 border-t border-night-border/80 flex items-center gap-3 sm:gap-6 text-xs font-mono text-content-muted">
-              <span className="flex items-center gap-1.5 text-content-secondary">
+              <span className="flex items-center gap-1.5 text-content-secondary hover:text-white transition-colors duration-200">
                 <span className="text-lemon">✓</span> Learn
               </span>
-              <span>→</span>
-              <span className="flex items-center gap-1.5 text-content-secondary">
+              <span className="select-none">→</span>
+              <span className="flex items-center gap-1.5 text-content-secondary hover:text-white transition-colors duration-200">
                 <span className="text-lemon">✓</span> Build
               </span>
-              <span>→</span>
-              <span className="flex items-center gap-1.5 text-content-secondary">
+              <span className="select-none">→</span>
+              <span className="flex items-center gap-1.5 text-content-secondary hover:text-white transition-colors duration-200">
                 <span className="text-lemon">✓</span> Improve
               </span>
-              <span>→</span>
+              <span className="select-none">→</span>
               <span className="flex items-center gap-1.5 text-lemon font-semibold">
                 <span>✦</span> Grow
               </span>
@@ -405,10 +404,10 @@ export const Hero = () => {
 
           {/* Right Hero Visual: Technical Code Window */}
           <div className="hero-window lg:col-span-5 w-full" ref={windowRef}>
-            <div className="relative rounded-2xl bg-night-surface border border-night-border p-1 shadow-2xl shadow-black/60 group">
+            <div className="relative rounded-2xl bg-night-surface border border-night-border hover:border-night-border-light hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(239,255,79,0.06)] p-1 shadow-2xl shadow-black/60 group transition-all duration-300">
               
               {/* Outer decorative gradient border accent */}
-              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-b from-lemon/20 via-transparent to-transparent opacity-50 blur-sm pointer-events-none" />
+              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-b from-lemon/20 via-transparent to-transparent opacity-50 group-hover:opacity-75 blur-sm pointer-events-none transition-opacity duration-300" />
 
               {/* IDE Container */}
               <div className="relative rounded-xl bg-[#12161F] overflow-hidden border border-night-border/50">
@@ -455,9 +454,10 @@ export const Hero = () => {
                   {/* Refined Runtime Badge with Status */}
                   <div className="flex items-center">
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-night-surface/90 border border-night-border text-[11px] font-mono shadow-sm">
-                      <svg className="w-3 h-3 text-[#10B981] shrink-0" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M2.5 6.3L4.8 8.6L9.5 3.5" />
-                      </svg>
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
+                      </span>
                       <span className="text-content-primary">python 3.12</span>
                       <span className="text-night-border">•</span>
                       <span className="text-content-secondary">react 19</span>
@@ -472,9 +472,9 @@ export const Hero = () => {
                       setActiveTab('django');
                       if (isAnimationDone) setVisibleChars(djangoTotal);
                     }}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-t-md transition-all duration-300 ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-t-md transition-all duration-200 ${
                       activeTab === 'django'
-                        ? 'bg-[#12161F] text-lemon border-t border-x border-night-border shadow-sm'
+                        ? 'bg-[#12161F] text-lemon border-t border-x border-night-border border-t-lemon/70 shadow-sm font-medium'
                         : 'text-content-secondary hover:text-white hover:bg-white/5'
                     }`}
                   >
@@ -486,9 +486,9 @@ export const Hero = () => {
                       setActiveTab('react');
                       if (isAnimationDone) setVisibleChars(reactTotal);
                     }}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-t-md transition-all duration-300 ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-t-md transition-all duration-200 ${
                       activeTab === 'react'
-                        ? 'bg-[#12161F] text-lemon border-t border-x border-night-border shadow-sm'
+                        ? 'bg-[#12161F] text-lemon border-t border-x border-night-border border-t-lemon/70 shadow-sm font-medium'
                         : 'text-content-secondary hover:text-white hover:bg-white/5'
                     }`}
                   >
@@ -497,9 +497,9 @@ export const Hero = () => {
                   </button>
                   <button
                     onClick={() => setActiveTab('terminal')}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-t-md transition-all duration-300 ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-t-md transition-all duration-200 ${
                       activeTab === 'terminal'
-                        ? 'bg-[#12161F] text-lemon border-t border-x border-night-border shadow-sm'
+                        ? 'bg-[#12161F] text-lemon border-t border-x border-night-border border-t-lemon/70 shadow-sm font-medium'
                         : 'text-content-secondary hover:text-white hover:bg-white/5'
                     }`}
                   >
